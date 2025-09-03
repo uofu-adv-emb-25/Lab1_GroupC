@@ -9,7 +9,13 @@ AS=arm-none-eabi-as
 main.i: main.c
 	$(CPP) main.c > main.i
 
+main.s: main.i
+	$(CC) -S main.i
+
+main.o: main.s
+	$(AS) main.s -o main.o
+
 clean:
-	rm -f main.i hello.txt
+	rm -f main.i main.s main.o hello.txt 
 
 .PHONY: clean
