@@ -6,14 +6,14 @@ CPP=arm-none-eabi-cpp
 CC=arm-none-eabi-gcc
 AS=arm-none-eabi-as
 
-main.i: main.c
-	$(CPP) main.c > main.i
+%.i: %.c
+	$(CPP) $< > $@
 
-main.s: main.i
-	$(CC) -S main.i
+%.s: %.i
+	$(CC) -S $@
 
-main.o: main.s
-	$(AS) main.s -o main.o
+%.o: %.s
+	$(AS) $< -o $@
 
 clean:
 	rm -f main.i main.s main.o hello.txt 
